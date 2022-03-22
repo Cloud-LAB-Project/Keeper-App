@@ -1,0 +1,9 @@
+.temp {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.list li {
+    list-style-type: disc;
+}

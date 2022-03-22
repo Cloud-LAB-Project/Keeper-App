@@ -1,4 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './frontend/App';
 
-ReactDOM.render(<h1>Keeper Application!</h1>, document.getElementById('root'));
+ReactDOM.render(
+    <div>
+        <App />
+    </div>,
+    document.getElementById('root')
+);
