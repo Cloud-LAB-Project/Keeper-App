@@ -3,17 +3,12 @@ import './AppInfo.css';
 
 const AppInfo = () => {
     return (
-        <div className="temp">
-            <div className="app-info">
-                <ul className="list">
-                    <li>one</li>
-                    <li>two</li>
-                    <li>three</li>
-                    <li>four</li>
-                    <li>five</li>
-                    <li>six</li>
-                </ul>
-            </div>
+        <div className="app-info">
+            <ul className="list">
+                <li>this is very nice app and i made it myself</li>
+                <li>this is very nice app and i made it myself</li>
+                <li>this is very nice app and i made it myself</li>
+            </ul>
         </div>
     );
 };
