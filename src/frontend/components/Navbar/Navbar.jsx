@@ -11,8 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from 'react-router-dom';
+import Logo from '../images/keeper.png';
+import './Navbar.css';
 
-const pages = ['Create a Note', 'Dark Mode'];
+const pages = ['Create a Note', 'Change Mode'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
@@ -34,6 +37,13 @@ const Navbar = () => {
         setAnchorElUser(null);
     };
 
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        let path = '/signin';
+        navigate(path);
+    };
+
     return (
         <AppBar position="sticky">
             <Container maxWidth="xl">
@@ -44,9 +54,10 @@ const Navbar = () => {
                         component="div"
                         sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                     >
-                        LOGO
+                        <a href="/">
+                            <img className="logo" src={Logo} alt="keeper" />
+                        </a>
                     </Typography>
-
                     <Box
                         sx={{
                             flexGrow: 1,
@@ -102,7 +113,9 @@ const Navbar = () => {
                             display: { xs: 'flex', md: 'none' },
                         }}
                     >
-                        LOGO
+                        <a href="../AppInfo/AppInfo">
+                            <img className="logo" src={Logo} alt="keeper" />
+                        </a>
                     </Typography>
                     <Box
                         sx={{
@@ -120,10 +133,14 @@ const Navbar = () => {
                             </Button>
                         ))}
                     </Box>
-
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button color="inherit">Sign In</Button>
-                        <Button color="inherit">Sign Up</Button>
+                        <Button
+                            onClick={routeChange}
+                            color="inherit"
+                            style={{ marginRight: '1em' }}
+                        >
+                            Sign In
+                        </Button>
                         <Tooltip title="Open settings">
                             <IconButton
                                 onClick={handleOpenUserMenu}

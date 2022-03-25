@@ -1,15 +1,22 @@
 import Navbar from './components/Navbar/Navbar';
 import AppInfo from './components/AppInfo/AppInfo';
+import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
 
 const App = () => {
     return (
         <div>
-            <Navbar />
-            <AppInfo />
-            <SignUp />
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<AppInfo />} />
+                    <Route path="/signin" element={<SignIn />} />
+                    <Route path="/signup" element={<SignUp />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 };

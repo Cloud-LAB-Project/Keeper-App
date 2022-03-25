@@ -1,7 +1,12 @@
-.temp {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.app-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.list {
+    font-size: 1.5em;
 }
 
 .list li {
