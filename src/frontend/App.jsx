@@ -12,12 +12,12 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <Navbar />
-
-                <Routes>
+                <AppInfo />
+                {/* <Routes>
                     <Route path="/" element={<AppInfo />} />
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
-                </Routes>
+                </Routes> */}
             </BrowserRouter>
         </div>
     );

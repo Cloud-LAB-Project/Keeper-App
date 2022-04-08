@@ -10,8 +10,8 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SignUpPopup from '../SignUp/SignUpPopup';
 
 const theme = createTheme();
 
@@ -25,13 +25,15 @@ export default function SignIn() {
         });
     };
 
+    const [openSignUp, setSignUp] = React.useState(false);
+      
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 0,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -88,9 +90,11 @@ export default function SignIn() {
                                 <Link>Forgot password?</Link>
                             </Grid> */}
                             <Grid item>
-                                <Link to={'/signup'}>
+                                <span onClick={()=>{setSignUp(true)}} style={{cursor:'pointer'}}>
                                     {"Don't have an account? Sign Up"}
-                                </Link>
+                                </span>
+                                <SignUpPopup openSignUp={openSignUp} setSignUp={setSignUp}>
+                                </SignUpPopup>
                             </Grid>
                         </Grid>
                     </Box>
