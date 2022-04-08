@@ -51,9 +51,10 @@ const Navbar = () => {
         let path = '/signin';
         navigate(path);
     };
-
+    // 00ACE9
+    // 00ABE1
     return (
-        <AppBar style={{ background: 'red' }} position="sticky">
+        <AppBar style={{ background: '#487AFA' }} position="sticky">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
