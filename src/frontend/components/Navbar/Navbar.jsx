@@ -15,8 +15,6 @@ import { useNavigate } from 'react-router-dom';
 import Logo from '../images/keeper.png';
 import './Navbar.css';
 import Popup from '../PopUp/Popup';
-import SignIn from '../SignIn/SignIn';
-import SignUp from '../SignUp/SignUp';
 import SignInPopup from '../SignIn/SignInPopup';
 
 const pages = ['Create a Note', 'Change Mode'];
@@ -137,7 +135,21 @@ const Navbar = () => {
                             display: { xs: 'none', md: 'flex' },
                         }}
                     >
-                        {pages.map((page) => (
+                            <Button
+                                onClick={handleClickOpen}
+                                // onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Create a Note
+                            </Button>
+                            <Button
+                                // onClick={handleClickOpen}
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Change Mode
+                            </Button>
+                        {/* {pages.map((page) => (
                             <Button
                                 key={page}
                                 onClick={handleClickOpen}
@@ -146,7 +158,7 @@ const Navbar = () => {
                             >
                                 {page}
                             </Button>
-                        ))}
+                        ))} */}
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Button
