@@ -5,12 +5,14 @@ import SignUp from './components/SignUp/SignUp';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
+//import Post from './components/Post/Post'
 
 const App = () => {
     return (
         <div>
             <BrowserRouter>
                 <Navbar />
+
                 <Routes>
                     <Route path="/" element={<AppInfo />} />
                     <Route path="/signin" element={<SignIn />} />

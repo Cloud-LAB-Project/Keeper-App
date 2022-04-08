@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../images/keeper.png';
 import './Navbar.css';
+import Popup from '../PopUp/Popup';
 
 const pages = ['Create a Note', 'Change Mode'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -21,6 +22,12 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [openPopup, setOpenPopup] = React.useState(false);
+    
+    const handleClickOpen = () => {
+        setOpenPopup(true);
+      };
+    
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -96,10 +103,12 @@ const Navbar = () => {
                                 <MenuItem
                                     key={page}
                                     onClick={handleCloseNavMenu}
+                                    
                                 >
                                     <Typography textAlign="center">
                                         {page}
                                     </Typography>
+                                    
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -126,7 +135,8 @@ const Navbar = () => {
                         {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={handleClickOpen}
+                                // onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 {page}
@@ -182,6 +192,9 @@ const Navbar = () => {
                     </Box>
                 </Toolbar>
             </Container>
+            <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}>
+            
+            </Popup>
         </AppBar>
     );
 };
