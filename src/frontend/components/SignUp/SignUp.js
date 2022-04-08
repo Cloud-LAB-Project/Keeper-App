@@ -10,8 +10,9 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SignInPopup from '../SignIn/SignInPopup';
+
 
 const theme = createTheme();
 
@@ -25,13 +26,15 @@ export default function SignUp() {
         });
     };
 
+    const [openSignIn, setSignIn] = React.useState(false);
+
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 0,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -114,9 +117,11 @@ export default function SignUp() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link to={'/signin'}>
-                                    Already have an account? Sign in
-                                </Link>
+                                <span onClick={()=>{setSignIn(true)}} style={{cursor:'pointer'}}>
+                                    {"Already have an account? Sign in"}
+                                </span>
+                                <SignInPopup openSignIn={openSignIn} setSignIn={setSignIn}>
+                                </SignInPopup>
                             </Grid>
                         </Grid>
                     </Box>
