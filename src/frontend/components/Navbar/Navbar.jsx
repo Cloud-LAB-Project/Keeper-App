@@ -23,11 +23,10 @@ const Navbar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [openPopup, setOpenPopup] = React.useState(false);
-    
+
     const handleClickOpen = () => {
         setOpenPopup(true);
-      };
-    
+    };
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -52,7 +51,7 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar position="sticky">
+        <AppBar style={{ background: 'red' }} position="sticky">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -103,12 +102,10 @@ const Navbar = () => {
                                 <MenuItem
                                     key={page}
                                     onClick={handleCloseNavMenu}
-                                    
                                 >
                                     <Typography textAlign="center">
                                         {page}
                                     </Typography>
-                                    
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -192,9 +189,7 @@ const Navbar = () => {
                     </Box>
                 </Toolbar>
             </Container>
-            <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}>
-            
-            </Popup>
+            <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}></Popup>
         </AppBar>
     );
 };
