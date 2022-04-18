@@ -14,7 +14,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignInPopup from '../SignIn/SignInPopup';
 import qs from 'qs';
 
-
 const theme = createTheme();
 
 export default function SignUp() {
@@ -25,22 +24,21 @@ export default function SignUp() {
             fname: data.get('firstName'),
             lname: data.get('lastName'),
             email: data.get('email'),
-            password: data.get('password')
+            password: data.get('password'),
         };
         // console.log(credentials);
         const userData = await fetch('http://localhost:3001/user/signup', {
             method: 'POST',
             mode: 'cors',
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: qs.stringify(credentials) 
+            body: qs.stringify(credentials),
         });
 
         const user = await userData.json();
 
         console.log(user);
-        
     };
 
     const [openSignIn, setSignIn] = React.useState(false);
@@ -134,11 +132,18 @@ export default function SignUp() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <span onClick={()=>{setSignIn(true)}} style={{cursor:'pointer'}}>
-                                    {"Already have an account? Sign in"}
+                                <span
+                                    onClick={() => {
+                                        setSignIn(true);
+                                    }}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    {'Already have an account? Sign in'}
                                 </span>
-                                <SignInPopup openSignIn={openSignIn} setSignIn={setSignIn}>
-                                </SignInPopup>
+                                <SignInPopup
+                                    openSignIn={openSignIn}
+                                    setSignIn={setSignIn}
+                                ></SignInPopup>
                             </Grid>
                         </Grid>
                     </Box>
