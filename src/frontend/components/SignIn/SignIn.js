@@ -85,19 +85,7 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
-                        <Grid container>
-                            {/* <Grid item xs>
-                                <Link>Forgot password?</Link>
-                            </Grid> */}
-                            <Grid item>
-                                <span onClick={()=>{setSignUp(true)}} style={{cursor:'pointer'}}>
-                                    {"Don't have an account? Sign Up"}
-                                </span>
-                                <SignUpPopup openSignUp={openSignUp} setSignUp={setSignUp}>
-                                </SignUpPopup>
-                            </Grid>
-                        </Grid>
-                    </Box>
+                   </Box>
                 </Box>
             </Container>
         </ThemeProvider>

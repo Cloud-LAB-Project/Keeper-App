@@ -16,6 +16,7 @@ import Logo from '../images/keeper.png';
 import './Navbar.css';
 import Popup from '../PopUp/Popup';
 import SignInPopup from '../SignIn/SignInPopup';
+import SignUpPopup from '../SignUp/SignUpPopup';
 
 const pages = ['Create a Note', 'Change Mode'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -25,6 +26,7 @@ const Navbar = () => {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [openPopup, setOpenPopup] = React.useState(false);
     const [openSignIn, setSignIn] = React.useState(false);
+    const [openSignUp, setSignUp] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpenPopup(true);
@@ -168,6 +170,16 @@ const Navbar = () => {
                         >
                             Sign In
                         </Button>
+                        <Button
+                            onClick={() => {
+                                setSignUp(true);
+                            }}
+                            // onClick={routeChange}
+                            color="inherit"
+                            style={{ marginRight: '1em' }}
+                        >
+                            Sign Up
+                        </Button>
                         <Tooltip title="Open settings">
                             <IconButton
                                 onClick={handleOpenUserMenu}
@@ -211,6 +223,7 @@ const Navbar = () => {
             </Container>
             <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} />
             <SignInPopup openSignIn={openSignIn} setSignIn={setSignIn} />
+            <SignUpPopup openSignUp={openSignUp} setSignUp={setSignUp} />
             {/* <SignUp openSignUp={openSignUp} setSignUp={setSignUp}/> */}
         </AppBar>
     );
