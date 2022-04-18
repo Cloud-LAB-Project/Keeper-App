@@ -130,22 +130,6 @@ export default function SignUp() {
                         >
                             Sign Up
                         </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <span
-                                    onClick={() => {
-                                        setSignIn(true);
-                                    }}
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    {'Already have an account? Sign in'}
-                                </span>
-                                <SignInPopup
-                                    openSignIn={openSignIn}
-                                    setSignIn={setSignIn}
-                                ></SignInPopup>
-                            </Grid>
-                        </Grid>
                     </Box>
                 </Box>
             </Container>
