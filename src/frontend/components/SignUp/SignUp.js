@@ -12,18 +12,35 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignInPopup from '../SignIn/SignInPopup';
+import qs from 'qs';
 
 
 const theme = createTheme();
 
 export default function SignUp() {
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
+        const credentials = {
+            fname: data.get('firstName'),
+            lname: data.get('lastName'),
             email: data.get('email'),
-            password: data.get('password'),
+            password: data.get('password')
+        };
+        // console.log(credentials);
+        const userData = await fetch('http://localhost:3001/user/signup', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: qs.stringify(credentials) 
         });
+
+        const user = await userData.json();
+
+        console.log(user);
+        
     };
 
     const [openSignIn, setSignIn] = React.useState(false);

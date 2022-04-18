@@ -1,11 +1,15 @@
 const express = require('express');
+const cors = require('cors');
+require('./db');
+
+const {user} = require('./routes/user');
 
 const app = express();
 
-app.get('/hello', function (req, res) {
-    res.send('Welcome to the Server');
-});
+app.use(cors());
+app.use(express.urlencoded({extended: false}));
+app.use('/user', user);
 
-app.listen(8000, function () {
-    console.log('Server is up and running on port 8000!');
+app.listen(3001, function () {
+    console.log('Server is up and running on port 3001!');
 });
