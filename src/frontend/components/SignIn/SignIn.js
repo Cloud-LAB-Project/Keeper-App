@@ -20,7 +20,7 @@ export default function SignIn({ user, setNewUser, setSignIn }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        
+
         const credentials = {
             email: data.get('email'),
             password: data.get('password'),
@@ -41,7 +41,7 @@ export default function SignIn({ user, setNewUser, setSignIn }) {
             setNewUser(user);
             setSignIn(false);
         }
-        
+
         console.log(user);
     };
 
@@ -91,12 +91,7 @@ export default function SignIn({ user, setNewUser, setSignIn }) {
                             id="password"
                             autoComplete="current-password"
                         />
-                        <FormControlLabel
-                            control={
-                                <Checkbox value="remember" color="primary" />
-                            }
-                            label="Remember me"
-                        />
+
                         <Button
                             type="submit"
                             fullWidth
