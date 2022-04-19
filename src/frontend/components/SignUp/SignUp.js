@@ -16,7 +16,7 @@ import qs from 'qs';
 
 const theme = createTheme();
 
-export default function SignUp({ user, setNewUser }) {
+export default function SignUp({ user, setNewUser, setSignUp }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -37,9 +37,12 @@ export default function SignUp({ user, setNewUser }) {
         });
 
         const user = await userData.json();
+
         if (user) {
             setNewUser(user);
+            setSignUp(false);
         }
+        
         console.log(user);
     };
 
@@ -135,7 +138,6 @@ export default function SignUp({ user, setNewUser }) {
                     </Box>
                 </Box>
             </Container>
-            x
         </ThemeProvider>
     );
 }

@@ -11,7 +11,7 @@ export default function Popup({ openSignUp, setSignUp, user, setNewUser }) {
     return (
         <Dialog open={openSignUp} onClose={handleClose} maxWidth="md">
             <DialogTitle>
-                <SignUp user={user} newUser={setNewUser} s />
+                <SignUp user={user} setNewUser={setNewUser} setSignUp={setSignUp} />
             </DialogTitle>
         </Dialog>
     );

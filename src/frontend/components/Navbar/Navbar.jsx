@@ -176,13 +176,13 @@ const Navbar = ({ user, setNewUser }) => {
             <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} />
             <SignInPopup
                 user={user}
-                newUser={setNewUser}
+                setNewUser={setNewUser}
                 openSignIn={openSignIn}
                 setSignIn={setSignIn}
             />
             <SignUpPopup
                 user={user}
-                newUser={setNewUser}
+                setNewUser={setNewUser}
                 openSignUp={openSignUp}
                 setSignUp={setSignUp}
             />

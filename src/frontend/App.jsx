@@ -12,7 +12,7 @@ const App = () => {
     return (
         <div>
             <BrowserRouter>
-                <Navbar user={user} newUser={setNewUser} />
+                <Navbar user={user} setNewUser={setNewUser} />
                 <AppInfo />
             </BrowserRouter>
         </div>
