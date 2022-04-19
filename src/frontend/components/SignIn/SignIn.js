@@ -15,7 +15,7 @@ import SignUpPopup from '../SignUp/SignUpPopup';
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({ user, setNewUser }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -26,7 +26,7 @@ export default function SignIn() {
     };
 
     const [openSignUp, setSignUp] = React.useState(false);
-      
+
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -85,7 +85,7 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
-                   </Box>
+                    </Box>
                 </Box>
             </Container>
         </ThemeProvider>

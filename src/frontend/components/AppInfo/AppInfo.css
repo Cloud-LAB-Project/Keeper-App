@@ -12,3 +12,7 @@
 .list li {
     list-style-type: disc;
 }
+
+li {
+    line-height: 2.5em;
+}

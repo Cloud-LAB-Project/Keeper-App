@@ -18,12 +18,10 @@ import Popup from '../PopUp/Popup';
 import SignInPopup from '../SignIn/SignInPopup';
 import SignUpPopup from '../SignUp/SignUpPopup';
 
-const pages = ['Create a Note', 'Change Mode'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Create a Note'];
 
-const Navbar = () => {
+const Navbar = ({ user, setNewUser }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [openPopup, setOpenPopup] = React.useState(false);
     const [openSignIn, setSignIn] = React.useState(false);
     const [openSignUp, setSignUp] = React.useState(false);
@@ -35,16 +33,9 @@ const Navbar = () => {
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
     };
 
     let navigate = useNavigate();
@@ -53,8 +44,7 @@ const Navbar = () => {
         let path = '/signin';
         navigate(path);
     };
-    // 00ACE9
-    // 00ABE1
+
     return (
         <AppBar style={{ background: '#487AFA' }} position="sticky">
             <Container maxWidth="xl">
@@ -139,15 +129,15 @@ const Navbar = () => {
                             // onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
-                            Create a Note
+                            {user && `Create a Note`}
                         </Button>
-                        <Button
+                        {/* <Button
                             // onClick={handleClickOpen}
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
                             Change Mode
-                        </Button>
+                        </Button> */}
                         {/* {pages.map((page) => (
                             <Button
                                 key={page}
@@ -168,7 +158,7 @@ const Navbar = () => {
                             color="inherit"
                             style={{ marginRight: '1em' }}
                         >
-                            Sign In
+                            {!user && `Sign In`}
                         </Button>
                         <Button
                             onClick={() => {
@@ -178,52 +168,24 @@ const Navbar = () => {
                             color="inherit"
                             style={{ marginRight: '1em' }}
                         >
-                            Sign Up
+                            {!user && `Sign Up`}
                         </Button>
-                        <Tooltip title="Open settings">
-                            <IconButton
-                                onClick={handleOpenUserMenu}
-                                sx={{ p: 0 }}
-                            >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="/static/images/avatar/2.jpg"
-                                />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {setting}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
                     </Box>
                 </Toolbar>
             </Container>
             <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} />
-            <SignInPopup openSignIn={openSignIn} setSignIn={setSignIn} />
-            <SignUpPopup openSignUp={openSignUp} setSignUp={setSignUp} />
+            <SignInPopup
+                user={user}
+                newUser={setNewUser}
+                openSignIn={openSignIn}
+                setSignIn={setSignIn}
+            />
+            <SignUpPopup
+                user={user}
+                newUser={setNewUser}
+                openSignUp={openSignUp}
+                setSignUp={setSignUp}
+            />
             {/* <SignUp openSignUp={openSignUp} setSignUp={setSignUp}/> */}
         </AppBar>
     );

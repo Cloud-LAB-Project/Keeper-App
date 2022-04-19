@@ -3,21 +3,17 @@ import AppInfo from './components/AppInfo/AppInfo';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 //import Post from './components/Post/Post'
 
 const App = () => {
+    const [user, setNewUser] = useState(null);
     return (
         <div>
             <BrowserRouter>
-                <Navbar />
+                <Navbar user={user} newUser={setNewUser} />
                 <AppInfo />
-                {/* <Routes>
-                    <Route path="/" element={<AppInfo />} />
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
-                </Routes> */}
             </BrowserRouter>
         </div>
     );

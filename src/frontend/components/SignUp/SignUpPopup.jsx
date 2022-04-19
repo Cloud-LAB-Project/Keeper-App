@@ -1,13 +1,9 @@
 import React from 'react';
 import { Dialog } from '@material-ui/core';
-import { DialogContent, DialogTitle } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import { Button } from '@material-ui/core';
+import { DialogTitle } from '@mui/material';
 import SignUp from './SignUp';
 
-export default function Popup(props) {
-    const { title, childern, openSignUp, setSignUp } = props;
-
+export default function Popup({ openSignUp, setSignUp, user, setNewUser }) {
     const handleClose = () => {
         setSignUp(false);
     };
@@ -15,9 +11,8 @@ export default function Popup(props) {
     return (
         <Dialog open={openSignUp} onClose={handleClose} maxWidth="md">
             <DialogTitle>
-                <SignUp/>
+                <SignUp user={user} newUser={setNewUser} s />
             </DialogTitle>
-            
         </Dialog>
     );
 }
