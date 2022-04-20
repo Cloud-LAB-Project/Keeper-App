@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar/Navbar';
+import Note from './components/Note/Note'
 import AppInfo from './components/AppInfo/AppInfo';
 import { BrowserRouter } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -11,7 +12,11 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <Navbar user={user} setNewUser={setNewUser} />
+<<<<<<< HEAD
                 {!user ? <AppInfo /> : <Post />}
+=======
+                <Note />
+>>>>>>> refs/remotes/origin/master
             </BrowserRouter>
         </div>
     );
