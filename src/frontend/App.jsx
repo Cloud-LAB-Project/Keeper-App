@@ -1,4 +1,5 @@
 import Navbar from './components/Navbar/Navbar';
+import Note from './components/Note/Note'
 import AppInfo from './components/AppInfo/AppInfo';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
@@ -13,7 +14,7 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <Navbar user={user} setNewUser={setNewUser} />
-                <AppInfo />
+                <Note />
             </BrowserRouter>
         </div>
     );
