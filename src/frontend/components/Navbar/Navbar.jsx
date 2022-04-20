@@ -7,11 +7,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useNavigate } from 'react-router-dom';
 import Logo from '../images/keeper.png';
 import './Navbar.css';
 import Popup from '../PopUp/Popup';
@@ -38,12 +35,12 @@ const Navbar = ({ user, setNewUser }) => {
         setAnchorElNav(null);
     };
 
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
-    const routeChange = () => {
-        let path = '/signin';
-        navigate(path);
-    };
+    // const routeChange = () => {
+    //     let path = '/signin';
+    //     navigate(path);
+    // };
 
     return (
         <AppBar style={{ background: '#487AFA' }} position="sticky">
@@ -191,7 +188,6 @@ const Navbar = ({ user, setNewUser }) => {
                 openSignUp={openSignUp}
                 setSignUp={setSignUp}
             />
-            {/* <SignUp openSignUp={openSignUp} setSignUp={setSignUp}/> */}
         </AppBar>
     );
 };
