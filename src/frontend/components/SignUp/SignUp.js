@@ -3,15 +3,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import SignInPopup from '../SignIn/SignInPopup';
 import qs from 'qs';
 
 const theme = createTheme();
@@ -42,11 +39,11 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
             setNewUser(user);
             setSignUp(false);
         }
-        
+
         console.log(user);
     };
 
-    const [openSignIn, setSignIn] = React.useState(false);
+    // const [openSignIn, setSignIn] = React.useState(false);
 
     return (
         <ThemeProvider theme={theme}>
@@ -54,7 +51,8 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 0,
+                        marginTop: 3,
+                        marginBottom: 1,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',

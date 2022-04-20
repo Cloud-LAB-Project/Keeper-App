@@ -47,7 +47,8 @@ export default function SignIn({ user, setNewUser, setSignIn }) {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 0,
+                        marginTop: 3,
+                        marginBottom: 2,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',

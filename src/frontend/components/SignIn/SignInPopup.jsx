@@ -1,22 +1,27 @@
 import React from 'react';
 import { Dialog } from '@material-ui/core';
-import { DialogTitle } from '@mui/material';
+import { DialogContent } from '@mui/material';
 import SignIn from './SignIn';
 
-export default function Popup({ openSignIn, setSignIn, user, setNewUser }) {
+export default function SignInPopUp({
+    openSignIn,
+    setSignIn,
+    user,
+    setNewUser,
+}) {
     const handleClose = () => {
         setSignIn(false);
     };
 
     return (
         <Dialog open={openSignIn} onClose={handleClose} maxWidth="md">
-            <DialogTitle>
+            <DialogContent>
                 <SignIn
                     user={user}
                     setNewUser={setNewUser}
                     setSignIn={setSignIn}
                 />
-            </DialogTitle>
+            </DialogContent>
         </Dialog>
     );
 }

@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from '../images/keeper.png';
 import './Navbar.css';
-import Popup from '../PopUp/Popup';
+import Popup from '../CreateNote/CreateNotePopUp';
 import SignInPopup from '../SignIn/SignInPopup';
 import SignUpPopup from '../SignUp/SignUpPopup';
 
@@ -152,26 +152,30 @@ const Navbar = ({ user, setNewUser }) => {
                         ))} */}
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
-                        <Button
-                            onClick={() => {
-                                setSignIn(true);
-                            }}
-                            // onClick={routeChange}
-                            color="inherit"
-                            style={{ marginRight: '1em' }}
-                        >
-                            {!user && `Sign In`}
-                        </Button>
-                        <Button
-                            onClick={() => {
-                                setSignUp(true);
-                            }}
-                            // onClick={routeChange}
-                            color="inherit"
-                            style={{ marginRight: '1em' }}
-                        >
-                            {!user && `Sign Up`}
-                        </Button>
+                        {!user && (
+                            <Button
+                                onClick={() => {
+                                    setSignIn(true);
+                                }}
+                                // onClick={routeChange}
+                                color="inherit"
+                                style={{ marginRight: '1em' }}
+                            >
+                                Sign In
+                            </Button>
+                        )}
+                        {!user && (
+                            <Button
+                                onClick={() => {
+                                    setSignUp(true);
+                                }}
+                                // onClick={routeChange}
+                                color="inherit"
+                                style={{ marginRight: '1em' }}
+                            >
+                                Sign Up
+                            </Button>
+                        )}
                     </Box>
                 </Toolbar>
             </Container>
