@@ -10,6 +10,9 @@ import qs from 'qs';
 
 const theme = createTheme();
 
+<<<<<<< HEAD
+export default function CreateNote() {
+=======
 export default function CreateNote({ user, posts, setPosts, setOpenPopup }) {
 
     async function handleSubmit(event) {
@@ -36,6 +39,7 @@ export default function CreateNote({ user, posts, setPosts, setOpenPopup }) {
         setOpenPopup(false);
         // console.log({...note, id: json._id});
     }
+>>>>>>> refs/remotes/origin/master
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="lg">

@@ -179,7 +179,15 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
                     </Box>
                 </Toolbar>
             </Container>
+<<<<<<< HEAD
+            <Popup
+                user={user}
+                openPopup={openPopup}
+                setOpenPopup={setOpenPopup}
+            />
+=======
             <Popup user={user} setPosts={setPosts} openPopup={openPopup} setOpenPopup={setOpenPopup} />
+>>>>>>> refs/remotes/origin/master
             <SignInPopup
                 user={user}
                 setNewUser={setNewUser}
