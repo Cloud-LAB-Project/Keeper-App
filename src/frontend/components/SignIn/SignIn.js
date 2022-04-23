@@ -13,6 +13,7 @@ import qs from 'qs';
 const theme = createTheme();
 
 export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
+    const [warn, setWarn] = React.useState(false);
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -25,6 +26,7 @@ export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
         const userData = await fetch('http://localhost:3001/user/login', {
             method: 'POST',
             mode: 'cors',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -33,12 +35,22 @@ export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
 
         const user = await userData.json();
 
+        if (!user.password) {
+            setWarn(true);
+            return;
+        }
+
         const posts = await fetch('http://localhost:3001/user/post?user=' + user._id, {
             method: 'GET',
             mode: 'cors'
         });
 
-        const postsJson = await posts.json();
+        let postsJson = await posts.json();
+        postsJson = postsJson.map(post => {
+            post['id'] = post['_id'];
+            delete post['_id'];
+            return post;
+        })
 
         if (user) {
             setNewUser(user);
@@ -94,7 +106,7 @@ export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
                             id="password"
                             autoComplete="current-password"
                         />
-
+                        {warn && <p style={{ textAlign: 'center', color: 'red' }}>Email and Password didn't match</p>}
                         <Button
                             type="submit"
                             fullWidth

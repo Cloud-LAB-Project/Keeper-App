@@ -42,6 +42,7 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
         const userData = await fetch('http://localhost:3001/user/signup', {
             method: 'POST',
             mode: 'cors',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },

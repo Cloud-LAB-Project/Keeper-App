@@ -11,8 +11,35 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import Typography from '@mui/material/Typography';
 import './Post.css'
+import qs from 'qs'
 
-export default function MediaCard({ posts }) {
+export default function MediaCard({ posts, user, setPosts }) {
+    async function deletePost(id) {
+        console.log(id);
+        await fetch('http://localhost:3001/user/delete', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: qs.stringify({ postId: id, userId: user._id })
+        });
+
+        const posts = await fetch('http://localhost:3001/user/post?user=' + user._id, {
+            method: 'GET',
+            mode: 'cors'
+        });
+
+        let postsJson = await posts.json();
+        postsJson = postsJson.map(post => {
+            post['id'] = post['_id'];
+            delete post['_id'];
+            return post;
+        });
+
+        setPosts(postsJson);
+    }
+
     const notes = posts.map(post => {
         return (
             <div className='NoteCard' key={post.id}>
@@ -26,7 +53,7 @@ export default function MediaCard({ posts }) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <IconButton aria-label="delete">
+                        <IconButton aria-label="delete" onClick={(e) => deletePost(post.id)}>
                             <DeleteIcon />
                         </IconButton>
                         <IconButton>
