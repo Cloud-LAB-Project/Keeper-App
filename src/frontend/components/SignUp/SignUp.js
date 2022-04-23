@@ -14,6 +14,21 @@ import qs from 'qs';
 const theme = createTheme();
 
 export default function SignUp({ user, setNewUser, setSignUp }) {
+
+    const [password, setPassword] = React.useState({ password: '', "confirm-password": '' });
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setPassword(password => {
+            return {
+                ...password,
+                [name]: value
+            }
+        });
+    }
+
+    const enabled = password.password !== '' && (password.password === password["confirm-password"]);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -27,6 +42,7 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
         const userData = await fetch('http://localhost:3001/user/signup', {
             method: 'POST',
             mode: 'cors',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -111,6 +127,7 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -122,6 +139,7 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
                                     type="password"
                                     id="confirm-password"
                                     autoComplete="confirm-password"
+                                    onChange={handleChange}
                                 />
                             </Grid>
                         </Grid>
@@ -129,6 +147,7 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
                             type="submit"
                             fullWidth
                             variant="contained"
+                            disabled={!enabled}
                             sx={{ mt: 3, mb: 2 }}
                         >
                             Sign Up

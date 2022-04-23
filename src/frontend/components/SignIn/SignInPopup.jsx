@@ -8,6 +8,7 @@ export default function SignInPopUp({
     setSignIn,
     user,
     setNewUser,
+    setPosts
 }) {
     const handleClose = () => {
         setSignIn(false);
@@ -19,6 +20,7 @@ export default function SignInPopUp({
                 <SignIn
                     user={user}
                     setNewUser={setNewUser}
+                    setPosts={setPosts}
                     setSignIn={setSignIn}
                 />
             </DialogContent>
