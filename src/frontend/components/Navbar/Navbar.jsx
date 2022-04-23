@@ -1,27 +1,27 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+import CreateNotePopup from '../CreateNote/CreateNotePopUp';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import Logo from '../images/keeper.png';
-import './Navbar.css';
-import Popup from '../CreateNote/CreateNotePopUp';
 import SignInPopup from '../SignIn/SignInPopup';
 import SignUpPopup from '../SignUp/SignUpPopup';
+import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import Logo from '../images/keeper.png';
+import Menu from '@mui/material/Menu';
+import Box from '@mui/material/Box';
+import './Navbar.css';
 
 const pages = ['Create a Note'];
 
 const Navbar = ({ user, setNewUser, posts, setPosts }) => {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [openPopup, setOpenPopup] = React.useState(false);
-    const [openSignIn, setSignIn] = React.useState(false);
-    const [openSignUp, setSignUp] = React.useState(false);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [openPopup, setOpenPopup] = useState(false);
+    const [openSignIn, setSignIn] = useState(false);
+    const [openSignUp, setSignUp] = useState(false);
 
     const handleClickOpen = () => {
         setOpenPopup(true);
@@ -35,12 +35,14 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
         setAnchorElNav(null);
     };
 
-    // let navigate = useNavigate();
+    const mobileScreen = () => {
+        setOpenPopup(true);
+        setAnchorElNav(null);
+    };
 
-    // const routeChange = () => {
-    //     let path = '/signin';
-    //     navigate(path);
-    // };
+    const handleLogout = () => {
+        console.log('User logged out!');
+    };
 
     return (
         <AppBar style={{ background: '#487AFA' }} position="sticky">
@@ -92,10 +94,7 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
                                 }}
                             >
                                 {pages.map((page) => (
-                                    <MenuItem
-                                        key={page}
-                                        onClick={handleCloseNavMenu}
-                                    >
+                                    <MenuItem key={page} onClick={mobileScreen}>
                                         <Typography textAlign="center">
                                             {page}
                                         </Typography>
@@ -126,30 +125,11 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
                         {user && (
                             <Button
                                 onClick={handleClickOpen}
-                                // onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Create a Note
                             </Button>
                         )}
-
-                        {/* <Button
-                            // onClick={handleClickOpen}
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            Change Mode
-                        </Button> */}
-                        {/* {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleClickOpen}
-                                // onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))} */}
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         {!user && (
@@ -157,7 +137,6 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
                                 onClick={() => {
                                     setSignIn(true);
                                 }}
-                                // onClick={routeChange}
                                 color="inherit"
                                 style={{ marginRight: '1em' }}
                             >
@@ -169,17 +148,24 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
                                 onClick={() => {
                                     setSignUp(true);
                                 }}
-                                // onClick={routeChange}
                                 color="inherit"
                                 style={{ marginRight: '1em' }}
                             >
                                 Sign Up
                             </Button>
                         )}
+                        {user && (
+                            <Button
+                                onClick={handleLogout}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                Logout
+                            </Button>
+                        )}
                     </Box>
                 </Toolbar>
             </Container>
-            <Popup
+            <CreateNotePopup
                 user={user}
                 setPosts={setPosts}
                 openPopup={openPopup}

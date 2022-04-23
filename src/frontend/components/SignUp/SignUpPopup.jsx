@@ -1,7 +1,7 @@
-import React from 'react';
-import { Dialog } from '@material-ui/core';
 import { DialogContent } from '@mui/material';
+import { Dialog } from '@material-ui/core';
 import SignUp from './SignUp';
+import React from 'react';
 
 export default function SignUpPopup({
     openSignUp,

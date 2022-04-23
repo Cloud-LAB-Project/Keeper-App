@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import CssBaseline from '@mui/material/CssBaseline';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import * as React from 'react';
 import qs from 'qs';
 
 const theme = createTheme();
@@ -40,25 +40,26 @@ export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
             return;
         }
 
-        const posts = await fetch('http://localhost:3001/user/post?user=' + user._id, {
-            method: 'GET',
-            mode: 'cors'
-        });
+        const posts = await fetch(
+            'http://localhost:3001/user/post?user=' + user._id,
+            {
+                method: 'GET',
+                mode: 'cors',
+            }
+        );
 
         let postsJson = await posts.json();
-        postsJson = postsJson.map(post => {
+        postsJson = postsJson.map((post) => {
             post['id'] = post['_id'];
             delete post['_id'];
             return post;
-        })
+        });
 
         if (user) {
             setNewUser(user);
             setSignIn(false);
-            setPosts(postsJson)
+            setPosts(postsJson);
         }
-
-        // console.log(user);
     };
 
     return (
@@ -106,7 +107,11 @@ export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
                             id="password"
                             autoComplete="current-password"
                         />
-                        {warn && <p style={{ textAlign: 'center', color: 'red' }}>Email and Password didn't match</p>}
+                        {warn && (
+                            <p style={{ textAlign: 'center', color: 'red' }}>
+                                Email and Password didn't match
+                            </p>
+                        )}
                         <Button
                             type="submit"
                             fullWidth

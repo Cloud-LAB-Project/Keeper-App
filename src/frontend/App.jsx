@@ -1,7 +1,7 @@
 import AppInfo from './components/AppInfo/AppInfo';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Post from './components/Post/Post';
-import React, { useState } from 'react';
 import qs from 'qs';
 import './App.css';
 
@@ -12,8 +12,6 @@ async function checkValidity(setNewUser, setPosts) {
     const uid = cookieObj.get('uid').slice(2).replaceAll('"', '');
 
     if (uid && uid !== '') {
-        console.log(uid);
-        console.log('user');
         const userData = await fetch('http://localhost:3001/user/letin', {
             method: 'POST',
             mode: 'cors',
@@ -50,7 +48,7 @@ const App = () => {
     const [user, setNewUser] = useState(null);
     const [posts, setPosts] = useState([]);
 
-    React.useEffect(() => checkValidity(setNewUser, setPosts), []);
+    useEffect(() => checkValidity(setNewUser, setPosts), []);
 
     return (
         <div>

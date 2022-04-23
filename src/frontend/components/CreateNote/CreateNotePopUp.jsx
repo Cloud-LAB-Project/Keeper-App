@@ -1,10 +1,15 @@
-import React from 'react';
-import { Dialog } from '@material-ui/core';
 import { DialogContent } from '@mui/material';
+import { Dialog } from '@material-ui/core';
 import CreateNote from './CreateNote';
 import './CreateNotePopUp.css';
+import React from 'react';
 
-export default function Popup({ user, openPopup, setOpenPopup, setPosts }) {
+export default function CreateNotePopup({
+    user,
+    openPopup,
+    setOpenPopup,
+    setPosts,
+}) {
     const handleClose = () => {
         setOpenPopup(false);
     };

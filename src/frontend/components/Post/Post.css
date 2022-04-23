@@ -1,6 +1,6 @@
 .NoteCard {
     display: inline-block;
     padding: 1%;
-    margin-top: 2%;
-    margin-left: 3.5%;
+    margin: auto;
+    width: auto;
 }
