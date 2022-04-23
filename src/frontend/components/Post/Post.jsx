@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import Typography from '@mui/material/Typography';
+import ReactReadMoreReadLess from 'react-read-more-read-less';
 import './Post.css';
 import qs from 'qs';
 
@@ -55,7 +56,15 @@ export default function MediaCard({ posts, user, setPosts }) {
                             {post.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {post.content}
+                            <ReactReadMoreReadLess
+                                charLimit={200}
+                                readMoreText={'Read more ▼'}
+                                readLessText={'Read less ▲'}
+                                readMoreClassName="read-more-less--more"
+                                readLessClassName="read-more-less--less"
+                            >
+                                {post.content}
+                            </ReactReadMoreReadLess>
                         </Typography>
                     </CardContent>
                     <CardActions>
@@ -71,7 +80,6 @@ export default function MediaCard({ posts, user, setPosts }) {
                         <IconButton>
                             <PushPinIcon />
                         </IconButton>
-                        <Button size="small">Learn More</Button>
                     </CardActions>
                 </Card>
             </div>
