@@ -43,13 +43,10 @@ async function checkValidity(setNewUser, setPosts) {
 
 const App = () => {
     const [user, setNewUser] = useState(null);
-<<<<<<< HEAD
-=======
     const [posts, setPosts] = useState([]);
 
     React.useEffect(() => checkValidity(setNewUser, setPosts), []);
 
->>>>>>> refs/remotes/origin/master
     return (
         <div>
             { }
