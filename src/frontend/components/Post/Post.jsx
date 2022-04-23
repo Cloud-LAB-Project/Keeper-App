@@ -44,8 +44,12 @@ export default function MediaCard({ posts, user, setPosts }) {
 
     const [openEditPopup, setEditOpenPopup] = useState(false);
 
-    const handleEditClick = () => {
+    const handleEditOpenClick = () => {
         setEditOpenPopup(true);
+    };
+
+    const handleEditCloseClick = () => {
+        setEditOpenPopup(false);
     };
 
     const notes = posts.map((post) => {
@@ -65,16 +69,21 @@ export default function MediaCard({ posts, user, setPosts }) {
                             >
                                 {post.title}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                <ReactReadMoreReadLess
-                                    charLimit={200}
-                                    readMoreText={'Read more ▼'}
-                                    readLessText={'Read less ▲'}
-                                    readMoreClassName="read-more-less--more"
-                                    readLessClassName="read-more-less--less"
+                            <Typography variant="body1" color="text.secondary">
+                                <span
+                                // onClick={handleEditOpenClick}
+                                // onClose={handleEditCloseClick}
                                 >
-                                    {post.content}
-                                </ReactReadMoreReadLess>
+                                    <ReactReadMoreReadLess
+                                        charLimit={200}
+                                        readMoreText={'Read more ▼'}
+                                        readLessText={'Read less ▲'}
+                                        readMoreClassName="read-more-less--more"
+                                        readLessClassName="read-more-less--less"
+                                    >
+                                        {post.content}
+                                    </ReactReadMoreReadLess>
+                                </span>
                             </Typography>
                         </CardContent>
                         <CardActions>
@@ -84,7 +93,7 @@ export default function MediaCard({ posts, user, setPosts }) {
                             >
                                 <DeleteIcon />
                             </IconButton>
-                            <IconButton onClick={handleEditClick}>
+                            <IconButton onClick={handleEditOpenClick}>
                                 <EditIcon />
                             </IconButton>
                         </CardActions>
