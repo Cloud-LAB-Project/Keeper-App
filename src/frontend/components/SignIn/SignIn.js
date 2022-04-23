@@ -26,7 +26,7 @@ export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
         const userData = await fetch('http://localhost:3001/user/login', {
             method: 'POST',
             mode: 'cors',
-            credentials: 'same-origin',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },

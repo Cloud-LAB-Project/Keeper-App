@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { dblClick } = require('@testing-library/user-event/dist/click');
 const { post } = require('../models/post');
 const { user } = require('../models/user');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 router.use(cookieParser());
+router.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 
 // signup
 router.route('/signup').post((req, res) => {
@@ -17,9 +18,7 @@ router.route('/signup').post((req, res) => {
     });
 
     newUser.save().then(doc => {
-        console.log(doc);
         res.cookie('uid', doc._id);
-        console.log(req.cookies);
         res.json(doc).end()
     });
 });
@@ -29,7 +28,6 @@ router.route('/login').post((req, res) => {
     user.find({ email: req.body.email }, (err, doc) => {
         if (!err && req.body.password === doc[0].password) {
             res.cookie('uid', doc[0]._id);
-            console.log(req.cookies);
             res.json(doc[0]).end();
         } else if (req.body.password !== doc[0].password) {
             res.json({ password: false }).end();
@@ -38,9 +36,9 @@ router.route('/login').post((req, res) => {
 });
 
 router.route('/letin').post((req, res) => {
+    console.log(req.body.id);
     user.find({ _id: req.body.id }, (err, doc) => {
         if (!err) {
-            console.log(doc[0]);
             res.json(doc[0]).end();
         }
     });
