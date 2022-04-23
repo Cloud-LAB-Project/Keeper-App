@@ -10,19 +10,15 @@ import qs from 'qs';
 
 const theme = createTheme();
 
-<<<<<<< HEAD
-export default function CreateNote() {
-=======
 export default function CreateNote({ user, posts, setPosts, setOpenPopup }) {
-
     async function handleSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const note = {
             id: user._id,
             title: data.get('title'),
-            content: data.get('content')
-        }
+            content: data.get('content'),
+        };
 
         const noteData = await fetch('http://localhost:3001/user/post', {
             method: 'POST',
@@ -35,11 +31,10 @@ export default function CreateNote({ user, posts, setPosts, setOpenPopup }) {
 
         const json = await noteData.json();
 
-        setPosts(posts => [...posts, { ...note, id: json._id }]);
+        setPosts((posts) => [...posts, { ...note, id: json._id }]);
         setOpenPopup(false);
         // console.log({...note, id: json._id});
     }
->>>>>>> refs/remotes/origin/master
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="lg">
@@ -53,7 +48,12 @@ export default function CreateNote({ user, posts, setPosts, setOpenPopup }) {
                         alignItems: 'center',
                     }}
                 >
-                    <Box component="form" noValidate sx={{ mt: 3 }} onSubmit={handleSubmit}>
+                    <Box
+                        component="form"
+                        noValidate
+                        sx={{ mt: 3 }}
+                        onSubmit={handleSubmit}
+                    >
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
