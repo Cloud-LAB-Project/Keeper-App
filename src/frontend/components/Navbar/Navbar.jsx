@@ -17,7 +17,7 @@ import SignUpPopup from '../SignUp/SignUpPopup';
 
 const pages = ['Create a Note'];
 
-const Navbar = ({ user, setNewUser }) => {
+const Navbar = ({ user, setNewUser, posts, setPosts }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [openPopup, setOpenPopup] = React.useState(false);
     const [openSignIn, setSignIn] = React.useState(false);
@@ -179,11 +179,12 @@ const Navbar = ({ user, setNewUser }) => {
                     </Box>
                 </Toolbar>
             </Container>
-            <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} />
+            <Popup user={user} setPosts={setPosts} openPopup={openPopup} setOpenPopup={setOpenPopup} />
             <SignInPopup
                 user={user}
                 setNewUser={setNewUser}
                 openSignIn={openSignIn}
+                setPosts={setPosts}
                 setSignIn={setSignIn}
             />
             <SignUpPopup

@@ -12,32 +12,39 @@ import AlarmIcon from '@mui/icons-material/Alarm';
 import Typography from '@mui/material/Typography';
 import './Post.css'
 
-export default function MediaCard() {
+export default function MediaCard({ posts }) {
+    const notes = posts.map(post => {
+        return (
+            <div className='NoteCard' key={post.id}>
+                <Card className='Note' sx={{ maxWidth: 400 }}>
+                    <CardContent>
+                        <Typography className='Title' gutterBottom variant="h5" component="div">
+                            {post.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {post.content}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <IconButton aria-label="delete">
+                            <DeleteIcon />
+                        </IconButton>
+                        <IconButton>
+                            <UpdateIcon />
+                        </IconButton>
+                        <IconButton>
+                            <PushPinIcon />
+                        </IconButton>
+                        <Button size="small">Learn More</Button>
+                    </CardActions>
+                </Card>
+            </div>
+        )
+    });
+
     return (
-        <div className='NoteCard'>
-            <Card className='Note' sx={{ maxWidth: 400 }}>
-                <CardContent>
-                    <Typography className='Title' gutterBottom variant="h5" component="div">
-                        Post title
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton>
-                    <IconButton>
-                        <UpdateIcon />
-                    </IconButton>
-                    <IconButton>
-                        <PushPinIcon />
-                    </IconButton>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card>
+        <div className='notes'>
+            {notes}
         </div>
     );
 }

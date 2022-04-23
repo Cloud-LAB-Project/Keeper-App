@@ -5,11 +5,18 @@ import './App.css';
 import Post from './components/Post/Post';
 
 const App = () => {
-    const [user, setNewUser] = useState(true);
+    const [user, setNewUser] = useState(null);
+    const [posts, setPosts] = useState([]);
+
     return (
         <div>
-            <Navbar user={user} setNewUser={setNewUser} />
-            {!user ? <AppInfo /> : <Post />}
+            <Navbar 
+                user={user} 
+                posts={posts} 
+                setPosts={setPosts} 
+                setNewUser={setNewUser} 
+            />
+            {!user ? <AppInfo /> : <Post posts={posts}/>}
         </div>
     );
 };

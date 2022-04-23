@@ -6,10 +6,36 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import qs from 'qs';
 
 const theme = createTheme();
 
-export default function Note() {
+export default function CreateNote({ user, posts, setPosts, setOpenPopup }) {
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const note = {
+            id: user._id,
+            title: data.get('title'),
+            content: data.get('content')
+        }
+
+        const noteData = await fetch('http://localhost:3001/user/post', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: qs.stringify(note),
+        });
+
+        const json = await noteData.json();
+
+        setPosts(posts => [...posts, { ...note, id: json._id }]);
+        setOpenPopup(false);
+        // console.log({...note, id: json._id});
+    }
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="lg">
@@ -23,7 +49,7 @@ export default function Note() {
                         alignItems: 'center',
                     }}
                 >
-                    <Box component="form" noValidate sx={{ mt: 3 }}>
+                    <Box component="form" noValidate sx={{ mt: 3 }} onSubmit={handleSubmit}>
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
@@ -47,10 +73,10 @@ export default function Note() {
                                     rows={10}
                                     required
                                     fullWidth
-                                    name="description"
+                                    name="content"
                                     label="Take a Note"
-                                    id="description"
-                                    autoComplete="description"
+                                    id="content"
+                                    autoComplete="content"
                                 />
                             </Grid>
                         </Grid>

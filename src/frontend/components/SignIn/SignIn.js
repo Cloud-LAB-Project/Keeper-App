@@ -12,7 +12,7 @@ import qs from 'qs';
 
 const theme = createTheme();
 
-export default function SignIn({ user, setNewUser, setSignIn }) {
+export default function SignIn({ user, setNewUser, setSignIn, setPosts }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -33,12 +33,20 @@ export default function SignIn({ user, setNewUser, setSignIn }) {
 
         const user = await userData.json();
 
+        const posts = await fetch('http://localhost:3001/user/post?user=' + user._id, {
+            method: 'GET',
+            mode: 'cors'
+        });
+
+        const postsJson = await posts.json();
+
         if (user) {
             setNewUser(user);
             setSignIn(false);
+            setPosts(postsJson)
         }
 
-        console.log(user);
+        // console.log(user);
     };
 
     return (
