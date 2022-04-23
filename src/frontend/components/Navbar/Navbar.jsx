@@ -179,7 +179,11 @@ const Navbar = ({ user, setNewUser }) => {
                     </Box>
                 </Toolbar>
             </Container>
-            <Popup openPopup={openPopup} setOpenPopup={setOpenPopup} />
+            <Popup
+                user={user}
+                openPopup={openPopup}
+                setOpenPopup={setOpenPopup}
+            />
             <SignInPopup
                 user={user}
                 setNewUser={setNewUser}

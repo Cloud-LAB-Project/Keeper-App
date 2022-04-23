@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-export default function Note() {
+export default function CreateNote() {
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="lg">

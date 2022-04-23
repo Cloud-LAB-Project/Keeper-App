@@ -5,7 +5,7 @@ import './App.css';
 import Post from './components/Post/Post';
 
 const App = () => {
-    const [user, setNewUser] = useState(true);
+    const [user, setNewUser] = useState(null);
     return (
         <div>
             <Navbar user={user} setNewUser={setNewUser} />

@@ -4,7 +4,7 @@ import { DialogContent } from '@mui/material';
 import CreateNote from './CreateNote';
 import './CreateNotePopUp.css';
 
-export default function Popup({ openPopup, setOpenPopup }) {
+export default function Popup({ user, openPopup, setOpenPopup }) {
     const handleClose = () => {
         setOpenPopup(false);
     };
@@ -12,11 +12,7 @@ export default function Popup({ openPopup, setOpenPopup }) {
     return (
         <Dialog open={openPopup} onClose={handleClose} maxWidth="md">
             <DialogContent>
-                <CreateNote
-                // user={user}
-                // setNewUser={setNewUser}
-                // setSignUp={setSignUp}
-                />
+                <CreateNote user={user} />
             </DialogContent>
         </Dialog>
     );
