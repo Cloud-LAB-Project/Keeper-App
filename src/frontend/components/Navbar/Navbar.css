@@ -1,6 +1,14 @@
 .logo {
     transform: scale();
-    max-height: 2em;
-    margin-top: 0.2em;
+    max-height: 3em;
+    margin-top: 0em;
     padding-left: 1em;
+}
+
+.logo-title{
+    color: black;
+    display: inline;
+    align-items: baseline;
+    font-size: 1.5em;
+    font-family: 'Tapestry', cursive;
 }
