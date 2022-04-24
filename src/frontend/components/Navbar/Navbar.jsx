@@ -46,7 +46,7 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
     };
 
     return (
-        <AppBar style={{ background: '#f00946', opacity: '0.9' }} position="sticky">
+        <AppBar style={{ background: '#487AFA', opacity: '1'}} position="sticky">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -57,6 +57,7 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
                     >
                         <a href="/">
                             <img className="logo" src={Logo} alt="keeper" />
+                            {/* <div className='logo-title'>Keeper</div> */}
                         </a>
                     </Typography>
                     <Box

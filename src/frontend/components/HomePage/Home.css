@@ -2,7 +2,7 @@
   color: #fff;
   padding: 8em 0;
   padding-left: 7em;
-  height: 40.6em;
+  height: 91vh;
 }
 
 .home__hero-row {
@@ -92,6 +92,9 @@ img {
     padding-right: 1.875em;
     padding-left: 0em;
   }
+  .home__hero-section{
+    height: 110vh;
+  }
   .home__hero-img-wrapper {
     max-width: 21.6em;
   }
@@ -118,6 +121,7 @@ img {
   }
   .home__hero-section{
     padding-left: 4em;
+    height: 89vh;
   }
   .home__hero-img-wrapper {
     max-width: 15em;
@@ -153,7 +157,7 @@ img {
     color: #fff;
     padding: 4em 0;
     padding-left: 0em;
-    height: 55em;
+    height: 135vh;
   }
 
   .container {
