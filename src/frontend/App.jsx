@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar';
 import Post from './components/Post/Post';
 import qs from 'qs';
 import './App.css';
+import Home from './components/HomePage/Home';
 
 async function checkValidity(setNewUser, setPosts) {
     const cookieObj = new URLSearchParams(
@@ -59,7 +60,7 @@ const App = () => {
                 setNewUser={setNewUser}
             />
             {!user ? (
-                <AppInfo />
+                <Home/>
             ) : (
                 <Post posts={posts} setPosts={setPosts} user={user} />
             )}
