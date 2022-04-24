@@ -14,7 +14,6 @@ import qs from 'qs';
 
 export default function MediaCard({ posts, user, setPosts }) {
     async function deletePost(id) {
-        console.log(id);
         await fetch('http://localhost:3001/user/delete', {
             method: 'POST',
             mode: 'cors',
@@ -43,8 +42,11 @@ export default function MediaCard({ posts, user, setPosts }) {
     }
 
     const [openEditPopup, setEditOpenPopup] = useState(false);
+    const [editNote, setEditNote] = useState(null);
 
-    const handleEditOpenClick = () => {
+
+    const handleEditOpenClick = (note) => {
+        setEditNote(note);
         setEditOpenPopup(true);
     };
 
@@ -93,14 +95,15 @@ export default function MediaCard({ posts, user, setPosts }) {
                             >
                                 <DeleteIcon />
                             </IconButton>
-                            <IconButton onClick={handleEditOpenClick}>
+                            <IconButton onClick={() => handleEditOpenClick(post)}>
                                 <EditIcon />
                             </IconButton>
                         </CardActions>
                     </Card>
                     <EditNotePopUp
-                        title={post.title}
-                        content={post.content}
+                        // title={post.title}
+                        // content={post.content}
+                        note={editNote}
                         user={user}
                         setPosts={setPosts}
                         openEditPopup={openEditPopup}

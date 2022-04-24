@@ -41,7 +41,8 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
     };
 
     const handleLogout = () => {
-        console.log('User logged out!');
+        document.cookie = "uid=;";
+        setNewUser(null);
     };
 
     return (

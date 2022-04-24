@@ -36,7 +36,7 @@ router.route('/login').post((req, res) => {
 });
 
 router.route('/letin').post((req, res) => {
-    console.log(req.body.id);
+    // console.log(req.body.id);
     user.find({ _id: req.body.id }, (err, doc) => {
         if (!err) {
             res.json(doc[0]).end();
@@ -54,6 +54,16 @@ router.route('/post').post((req, res) => {
     note.save().then(doc => {
         user.findByIdAndUpdate(req.body.id, { $push: { notes: doc._id } }).then(() => res.status(200).send(doc).end());
 
+    })
+})
+
+router.route('/update').post((req, res) => {
+    post.updateOne({_id: req.body.id}, {title: req.body.title, content: req.body.content}, (err, doc)=>{
+        if(!err){
+            res.status(200).end();
+        } else {
+            console.log(err);
+        }
     })
 })
 

@@ -56,7 +56,7 @@ export default function SignUp({ user, setNewUser, setSignUp }) {
             setSignUp(false);
         }
 
-        console.log(user);
+        // console.log(user);
     };
 
     // const [openSignIn, setSignIn] = React.useState(false);

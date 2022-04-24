@@ -4,8 +4,7 @@ import EditNote from './EditNote';
 import React from 'react';
 
 export default function EditNotePopup({
-    title,
-    content,
+    note,
     user,
     setPosts,
     openEditPopup,
@@ -19,8 +18,7 @@ export default function EditNotePopup({
         <Dialog open={openEditPopup} onClose={handleClose} maxWidth="md">
             <DialogContent>
                 <EditNote
-                    title={title}
-                    content={content}
+                    note={note}
                     user={user}
                     setEditOpenPopup={setEditOpenPopup}
                     setPosts={setPosts}
