@@ -46,7 +46,7 @@ const Navbar = ({ user, setNewUser, posts, setPosts }) => {
     };
 
     return (
-        <AppBar style={{ background: '#487AFA' }} position="sticky">
+        <AppBar style={{ background: '#f00946', opacity: '0.9' }} position="sticky">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography

@@ -1,5 +1,5 @@
 import React from 'react';
-import './HeroSection.css';
+import './Home.css';
 
 function Home() {
   return (
@@ -18,14 +18,14 @@ function Home() {
             <div className='col'>
               <div className='home__hero-text-wrapper'>
                 <div className='top-line'>EASY SETUP</div>
-                <h1 className='heading'>
+                <div className='heading'>
                 Gather your thoughts, then make them even better
-                </h1>
-                <p
+                </div>
+                <div
                   className='home__hero-subtitle'
                 >
                   Quickly capture what’s on your mind and get a reminder later at the right place or time. Great minds don’t always think alike, but they can share ideas and create together in Keeper.
-                </p>
+                </div>
                 
               </div>
             </div>
